@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request
 import requests
 import pickle
 import numpy as np
@@ -6,8 +6,9 @@ import sklearn
 from sklearn.preprocessing import StandardScaler
 app = Flask(__name__, template_folder='templates')
 model = pickle.load(open('random_forest_regression_model.pkl', 'rb'))
+
 @app.route('/',methods=['GET'])
-def Home():
+def index():
     return render_template('index.html')
 
 
@@ -49,5 +50,5 @@ def predict():
         return render_template('index.html')
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(host='localhost', debug=True, threaded=True)
 
