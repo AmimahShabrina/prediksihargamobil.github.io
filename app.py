@@ -8,7 +8,7 @@ app = Flask(__name__, template_folder='templates')
 model = pickle.load(open('random_forest_regression_model.pkl', 'rb'))
 
 @app.route('/',methods=['GET'])
-def index():
+def Home():
     return render_template('index.html')
 
 
@@ -50,5 +50,5 @@ def predict():
         return render_template('index.html')
 
 if __name__=="__main__":
-    app.run(host='localhost', debug=True, threaded=True)
+    app.run(debug=True)
 
